@@ -45,6 +45,7 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.NotaColunn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,6 +142,8 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NotaColunn});
             this.dataGridView1.Location = new System.Drawing.Point(12, 246);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(745, 354);
@@ -209,6 +212,11 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Notas";
             // 
+            // NotaColunn
+            // 
+            this.NotaColunn.HeaderText = "Nota";
+            this.NotaColunn.Name = "NotaColunn";
+            // 
             // CadastroAluno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,9 +239,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMatricula);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "CadastroAluno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Aluno";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CadastroAluno_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -259,6 +269,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox txtMatricula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NotaColunn;
     }
 }
 

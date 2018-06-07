@@ -63,9 +63,11 @@ namespace WFA
                 aluno.SetTurma(txtTurma.Text);
                 aluno.SetTurno(txtTurno.Text);
                 aluno.SetMatricula(Convert.ToInt32(txtMatricula.Text));
+                
                 if (novo)
                 {
                     Program.alunos.Add(aluno);
+                    MessageBox.Show("Cadastro realizado com sucesso !!");
                     
 
                 }
@@ -78,9 +80,12 @@ namespace WFA
                         {
                             Program.alunos[i] = aluno;
                         }
+                        MessageBox.Show("Cadastro editado com sucesso !!");
                     }
                 }
+                btnAdicionar.Enabled = true;
             }
+               
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -94,7 +99,7 @@ namespace WFA
             if (dialogResult == DialogResult.OK)
             {
                 AtualizarDataGridViewDasNotas();
-                MessageBox.Show("Cadastro realizado com sucesso !!");
+                MessageBox.Show("Nota adicionada  com sucesso !!");
             }
         }
 
@@ -104,6 +109,14 @@ namespace WFA
             {
                 double nota = aluno.GetNotas()[i];
                 dataGridView1.Rows.Add(new Object[] { nota });
+            }
+        }
+
+        private void CadastroAluno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5 && aluno != null)
+            {
+
             }
         }
     }
