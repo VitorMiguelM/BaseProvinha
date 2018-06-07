@@ -14,9 +14,32 @@ namespace WFA
     public partial class CadastroAluno : Form
     {
         private Aluno aluno;
+        private int codigo;
         public CadastroAluno()
         {
             InitializeComponent();
+        }
+
+        public CadastroAluno(int codigo)
+        {
+            this.codigo = codigo;
+            for(int i = 0; i < Program.alunos.Count(); i++)
+            {
+                Aluno aluno = Program.alunos[i];
+                if (aluno.GetCodigo() == codigo)
+                {
+                    txtNome.Text = aluno.GetNome();
+                    txtIdade.Text = Convert.ToString(aluno.GetIdade());
+                    txtMatricula.Text = Convert.ToString(aluno.GetMatricula());
+                    txtTurma.Text = aluno.GetTurma();
+                    txtTurno.Text = aluno.GetTurno();
+                    this.aluno = aluno;
+                    btnAdicionar.Enabled = true;
+                    btnApagar.Enabled = true;
+                    btnEditar.Enabled = true;
+                    return;
+                }
+            }
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -28,22 +51,41 @@ namespace WFA
         {
             try
             {
+                bool novo = aluno == null;
                     if (aluno != null)
                     {
                         aluno = new Aluno();
                     }
+
                 aluno = new Aluno();
                 aluno.SetNome(txtNome.Text);
                 aluno.SetIdade(Convert.ToInt32(txtIdade.Text));
                 aluno.SetTurma(txtTurma.Text);
                 aluno.SetTurno(txtTurno.Text);
                 aluno.SetMatricula(Convert.ToInt32(txtMatricula.Text));
-                Program.alunos.Add(aluno);
+                if (novo)
+                {
+                    Program.alunos.Add(aluno);
+                    
+
+                }
+                else
+                {
+                    for (int i = 0;  i < Program.alunos.Count(); i++)
+                    {
+                        Aluno alunoAux = Program.alunos[i];
+                        if(aluno.GetCodigo() == alunoAux.GetCodigo())
+                        {
+                            Program.alunos[i] = aluno;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -52,6 +94,7 @@ namespace WFA
             if (dialogResult == DialogResult.OK)
             {
                 AtualizarDataGridViewDasNotas();
+                MessageBox.Show("Cadastro realizado com sucesso !!");
             }
         }
 

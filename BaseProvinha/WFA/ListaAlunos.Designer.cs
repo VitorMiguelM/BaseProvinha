@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CodigoColunn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurmaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TurnoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +46,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoColunn,
             this.NomeColumn,
             this.TurmaColumn,
             this.TurnoColumn,
@@ -52,8 +54,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 58);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(440, 402);
+            this.dataGridView1.Size = new System.Drawing.Size(543, 402);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // CodigoColunn
+            // 
+            this.CodigoColunn.HeaderText = "Codigo";
+            this.CodigoColunn.Name = "CodigoColunn";
+            this.CodigoColunn.ReadOnly = true;
             // 
             // NomeColumn
             // 
@@ -115,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 472);
+            this.ClientSize = new System.Drawing.Size(567, 472);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnApagar);
@@ -135,6 +143,7 @@
         private System.Windows.Forms.Button btnApagar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoColunn;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurmaColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TurnoColumn;

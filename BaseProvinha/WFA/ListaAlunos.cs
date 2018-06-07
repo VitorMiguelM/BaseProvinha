@@ -40,18 +40,9 @@ namespace WFA
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            CadastroAluno cadastroAluno = new CadastroAluno();
-            new CadastroAluno().ShowDialog();
-            
-            if (dataGridView1.CurrentRow == null)
-            {
-                MessageBox.Show("Não tem nenhum aluno selecionada!");
-                return;
-            }
+            int codigo = Convert.ToInt32(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+            new CadastroAluno(codigo);
 
-            posicao = dataGridView1.CurrentRow.Index;
-            Aluno alunos = Program.alunos[posicao];
-            InserirInformacoesDoAlunoNoCadastro();
 
             
         }

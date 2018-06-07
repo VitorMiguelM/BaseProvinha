@@ -8,6 +8,7 @@ namespace Model
 {
     public class Aluno
     {
+        private static int UltimoCodigo;
         private int Codigo;
         private string Nome;
         private int Idade;
@@ -15,6 +16,15 @@ namespace Model
         private string Turma;
         private int Matricula;
         private List<double> Notas = new List<double>();
+
+        public Aluno()
+        {
+            Codigo = ++UltimoCodigo;
+        }
+        public int GetCodigo()
+        {
+            return Codigo;
+        }
 
         public void SetNome(string nome)
         {
@@ -89,6 +99,11 @@ namespace Model
                 throw new Exception("Matrícula tem que ser maior que 0"); 
             }
             Matricula = matricula;
+        }
+
+        public int GetMatricula()
+        {
+            return Matricula;
         }
 
 
