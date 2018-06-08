@@ -25,6 +25,11 @@ namespace WFA
 
         private void ListaAlunos_Activated(object sender, EventArgs e)
         {
+            PopularListaAlunos();
+        }
+
+        private void PopularListaAlunos()
+        {
             dataGridView1.Rows.Clear();
             for (int i = 0; i < Program.alunos.Count(); i++)
             {
@@ -38,6 +43,8 @@ namespace WFA
             }
         }
 
+       
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             int codigo = Convert.ToInt32(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
@@ -45,6 +52,29 @@ namespace WFA
 
 
             
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Selecione um registro para que seja possível apagar");
+                return;
+            }
+
+            int codigo = Convert.ToInt32(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+
+            for (int i = 0; i < Program.alunos.Count(); i++)
+            {
+                Aluno aluno = Program.alunos[i];
+                if (aluno.GetCodigo() == codigo)
+                {
+                    Program.alunos.Remove(aluno);
+                    PopularListaAlunos();
+                    MessageBox.Show(aluno.GetNome() + "Apagado com sucesso");
+                    return;
+                }
+            }
         }
     }
 }
